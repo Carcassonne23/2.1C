@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lord of the Rings Character Biographies</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1>Lord of the Rings Character Biographies</h1></body><br>
+    <p>Please choose a character to learn more about them:</p>
+    <div id="app">
+        <select v-model="selectedCharacter">
+            <option disabled value="">Character</option>
+            <option v-for="character in characters" :key="character.name" :value="character.name">{{ character.name }}</option>
+        </select>
+        <div v-if="selectedCharacter">
+            <h2>{{ selectedCharacter }}</h2><br>
+            <img :src="getCharacterImage(selectedCharacter)" :alt="selectedCharacter" class="responsive-image">
+            <p>{{ getCharacterBio(selectedCharacter) }}</p>
+        </div>
+        <br><button @click="togglePicture">Keep it secret, keep it safe.</button>
+            <div v-show="isPictureVisible">
+                <img src="ring.jpg" alt="The One Ring" class="responsive-image">
+                <p style="font-size: 1vw;">Three Rings for the Elven-kings under the sky,</p>
+                <p style="font-size: 1vw;">Seven for the Dwarf-lords in their halls of stone,</p>
+                <p style="font-size: 1vw;">Nine for Mortal Men doomed to die,</p>
+                <p style="font-size: 1vw;">One for the Dark Lord on his dark throne</p>
+                <p style="font-size: 1vw;">In the Land of Mordor where the Shadows lie.</p>
+                <p style="font-size: 1vw;">One Ring to rule them all, One Ring to find them,</p>
+                <p style="font-size: 1vw;">One Ring to bring them all and in the darkness bind them</p>
+                <p style="font-size: 1vw;">In the Land of Mordor where the Shadows lie.</p>
+            </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@3.2.19/dist/vue.global.min.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>

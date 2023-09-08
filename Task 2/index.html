@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alex TODO App</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1>Alex TODO App</h1><br>
+
+    <div id="todo"> <!--Calling in the TODO app-->
+        
+        <h2>Do you feel ready to get organised?</h2>
+        <button @click="ready = !ready">Toggle</button><br>
+        <h3 v-if="ready" style="background-color: lightgreen;">YES - Let's add to the list!</h3>
+        <h3 v-else style="background-color: lightcoral;">NO - Maybe later?!</h3><br>
+        <input v-model="newTodo" @keyup.enter="addTodo" placeholder="Write item here">
+        <button @click="addTodo">Add</button>
+        <todo-list :todos="todos" @remove="removeTodo"></todo-list>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@3.0.11/dist/vue.global.min.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
